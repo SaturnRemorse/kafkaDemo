@@ -22,7 +22,10 @@ public class UserController {
 
     @PostMapping("/{message}")
     public ResponseEntity<String> sendMessage(@PathVariable String message){
-        kafkaTemplate.send(topicName, message);
+
+        for(int i=0;i<=1000;i++) {
+            kafkaTemplate.send(topicName,""+i%2, message+i);
+        }
         return new ResponseEntity<>("message queued", HttpStatus.OK);
     }
 

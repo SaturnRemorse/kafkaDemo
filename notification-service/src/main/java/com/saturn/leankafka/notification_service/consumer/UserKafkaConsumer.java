@@ -12,9 +12,21 @@ public class UserKafkaConsumer {
 
 
     @KafkaListener(topics ="user-random-topic" )
-    public void handleUserRandomTopic(String message){
+    public void handleUserRandomTopic1(String message){
         log.info("message received: {}" , message);
     }
+
+    @KafkaListener(topics ="user-random-topic" )
+    public void handleUserRandomTopic2(String message){
+        log.info("message received: {}" , message);
+    }
+
+    @KafkaListener(topics ="user-random-topic" )
+    public void handleUserRandomTopic3(String message){
+        log.info("message received: {}" , message);
+    }
+
+
 
 
 }
