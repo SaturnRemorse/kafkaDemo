@@ -2,7 +2,7 @@ package com.saturn.leankafka.user_service.service;
 
 import com.saturn.leankafka.user_service.dto.CreateUserRequestDto;
 import com.saturn.leankafka.user_service.entity.User;
-import com.saturn.leankafka.user_service.event.UserCreatedEvent;
+import com.saturn.leankafka.event.UserCreatedEvent;
 import com.saturn.leankafka.user_service.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
