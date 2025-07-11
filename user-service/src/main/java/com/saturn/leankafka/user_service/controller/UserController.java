@@ -1,5 +1,7 @@
 package com.saturn.leankafka.user_service.controller;
 
+import com.saturn.leankafka.user_service.dto.CreateUserRequestDto;
+import com.saturn.leankafka.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,11 +20,16 @@ public class UserController {
     String topicName;
 
     private final KafkaTemplate<String, String> kafkaTemplate;
+    private final UserService userService;
 
+    @PostMapping
+    public ResponseEntity<String> createUser(@RequestBody CreateUserRequestDto createUserRequestDto){
+        userService.createUser(createUserRequestDto);
+        return ResponseEntity.ok("USER CREATED");
+    }
 
     @PostMapping("/{message}")
     public ResponseEntity<String> sendMessage(@PathVariable String message){
-
         for(int i=0;i<=1000;i++) {
             kafkaTemplate.send(topicName,""+i%2, message+i);
         }
